@@ -1,0 +1,23 @@
+{
+    "name": "gmbn/levrender",
+    "type": "library",
+    "description": "Levitron framework module to render the view ",
+    "keywords": ["view","render","levitron","module levitron"],
+    "homepage": "https://github.com/GMBN/LevRender",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gian Nunes",
+            "email": "gianboschette@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LevRender\\": "src/"
+        }
+    }
+}
