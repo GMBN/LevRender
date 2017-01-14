@@ -4,10 +4,12 @@ namespace LevRender\Service;
 
 class View {
 
-    private $_obj = [];
     private $viewHelper;
 
-    function render($dados, $file_view, $file_template, $viewHelper = []) {
+    function on($dados, $file_view, $file_template, $viewHelper = []) {
+        if(!$dados){
+            return ;
+        }
 
         $this->viewHelper = $viewHelper;
         $_template = true;
