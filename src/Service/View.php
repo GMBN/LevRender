@@ -26,14 +26,18 @@ class View {
 
     function __call($name, $arguments) {
         global $e;
-        
+
         $e->trigger('view.' . $name, $arguments);
 
-        $vh = $this->viewHelper;        
+        $vh = $this->viewHelper;
 
         if (isset($vh[$name])) {
             $className = $vh[$name];
-            $class = new $className;            
+            if (!is_callable($className)) {
+                $class = new $className;
+            }else{
+                $class=$className;
+            }
             return call_user_func_array($class, $arguments);
         }
     }
