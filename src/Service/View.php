@@ -6,7 +6,7 @@ class View {
 
     private $viewHelper;
 
-    function on($dados, $file_view, $file_template, $viewHelper = []) {
+    function on($dados, $file_view, $file_template,$js, $viewHelper = []) {
         if(!$dados){
             return ;
         }
@@ -16,6 +16,11 @@ class View {
 
         ob_start();
         extract($dados);
+        if(file_exists($js)){
+            echo '<script>';
+            require $js;
+            echo '</script>';
+        }
         require $file_view;
         $_content = ob_get_clean();
 
