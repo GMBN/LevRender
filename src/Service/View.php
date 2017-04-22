@@ -6,9 +6,9 @@ class View {
 
     private $viewHelper;
 
-    function on($dados, $file_view, $file_template,$js, $viewHelper = []) {
-        if(!$dados){
-            return ;
+    function on($dados, $file_view, $file_template, $js, $viewHelper = []) {
+        if (!$dados) {
+            return;
         }
 
         $this->viewHelper = $viewHelper;
@@ -16,12 +16,13 @@ class View {
 
         ob_start();
         extract($dados);
-        if(file_exists($js)){
-            echo '<script>';
+        require $file_view;
+        //inclui o arquivo js
+        if (file_exists($js)) {
+            echo '<script type="text/javascript">';
             require $js;
             echo '</script>';
         }
-        require $file_view;
         $_content = ob_get_clean();
 
         if ($_template && file_exists($file_template)) {
@@ -42,8 +43,8 @@ class View {
             $className = $vh[$name];
             if (!is_callable($className)) {
                 $class = new $className;
-            }else{
-                $class=$className;
+            } else {
+                $class = $className;
             }
             return call_user_func_array($class, $arguments);
         }
