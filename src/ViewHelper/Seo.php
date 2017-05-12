@@ -11,8 +11,9 @@ class Seo{
    }
     
    function title($titulo){
-       $this->_head.= '<title>'.$titulo.' | SOS Casar</title>'
-               . '<meta property="og:title" content="'.$titulo.' | SOS Casar" />';
+       $titulo = (empty($titulo))?'':$titulo.' | ';
+       $this->_head.= '<title>'.$titulo.'SOS Casar</title>'
+               . '<meta property="og:title" content="'.$titulo.'SOS Casar" />';
    }
    function metaDesc($desc){
        $this->_head.= '<meta name="description" content="'.$desc.'"/>'
