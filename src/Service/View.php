@@ -14,8 +14,16 @@ class View {
         $this->viewHelper = $viewHelper;
         $_template = true;
 
+        $metaDados = \sm::getInstance()->get('_meta');
+
         ob_start();
+        extract($metaDados);
         extract($dados);
+
+        if (!empty($_title)) {
+            $this->seo()->title($_title); //seta o titulo da page
+        }
+
         require $file_view;
         //inclui o arquivo js
         if (file_exists($js)) {

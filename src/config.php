@@ -6,7 +6,8 @@ return [
         'seo' => \LevRender\ViewHelper\Seo::class
     ],
     'eventGlobal' => [
-        e::preRender => \LevRender\Service\View::class
+        e::preRender => \LevRender\Service\View::class,
+        e::preController=> \LevRender\Service\MetaDados::class
     ],
     'viewHelper' => [
         'msg' => \LevRender\ViewHelper\Msg::class,
